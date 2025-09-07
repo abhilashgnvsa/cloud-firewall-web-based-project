@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cloud Firewall Rule Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="body">
+    <header class="header">
+        <h1 class="main-title">Cloud Firewall Rule Manager</h1>
+    </header>
+
+    <section class="auth-section" id="auth-section">
+        <h2 class="section-title">Admin Login</h2>
+        <form class="login-form" id="login-form">
+            <label class="form-label">
+                Email:
+                <input type="email" id="email" class="input" required />
+            </label>
+            <label class="form-label">
+                Password:
+                <input type="password" id="password" class="input" required />
+            </label>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <div class="auth-message" id="auth-message"></div>
+    </section>
+
+    <main class="dashboard" id="dashboard" style="display:none;">
+        <section class="rule-management" id="rule-management">
+            <h2 class="section-title">Firewall Rules</h2>
+            <form class="rule-form" id="rule-form">
+                <input type="hidden" id="rule-id" />
+                <label class="form-label">
+                    Rule Name:
+                    <input type="text" id="rule-name" class="input" required />
+                </label>
+                <label class="form-label">
+                    Action:
+                    <select id="rule-action" class="select">
+                        <option value="allow">Allow</option>
+                        <option value="block">Block</option>
+                    </select>
+                </label>
+                <label class="form-label">
+                    IP / CIDR:
+                    <input type="text" id="rule-ip" class="input" placeholder="e.g. 192.168.1.0/24 or 10.0.0.5" />
+                </label>
+                <label class="form-label">
+                    Port (optional):
+                    <input type="text" id="rule-port" class="input" placeholder="e.g. 80 or 1000-2000" />
+                </label>
+                <div class="form-actions">
+                    <button type="submit" id="save-rule" class="btn">Save Rule</button>
+                    <button type="button" id="cancel-edit" class="btn cancel-btn" style="display:none;">
+                        Cancel Edit
+                    </button>
+                </div>
+            </form>
+
+            <table class="rules-table" id="rules-table" border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                        <th>IP / CIDR</th>
+                        <th>Port</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+
+        <section class="traffic-section" id="traffic-section">
+            <h2 class="section-title">Live Traffic Log</h2>
+            <div class="sim-controls">
+                <button id="start-sim" class="btn">Start Logs</button>
+                <button id="stop-sim" class="btn" disabled>Stop Logs</button>
+            </div>
+            <div class="traffic-log" id="traffic-log">
+                </div>
+        </section>
+
+        <section class="logout-section">
+            <button id="logout" class="btn logout-btn">Logout</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
